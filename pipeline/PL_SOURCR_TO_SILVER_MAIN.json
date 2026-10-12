@@ -50,7 +50,7 @@
 					},
 					"activities": [
 						{
-							"name": "test",
+							"name": "Set variable1",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -59,8 +59,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "pipelineReturnValue",
-								"setSystemVariable": true
+								"variableName": "test",
+								"value": {
+									"value": "@item().table_id",
+									"type": "Expression"
+								}
 							}
 						}
 					]
@@ -71,6 +74,11 @@
 			"source_system": {
 				"type": "string",
 				"defaultValue": "neon_postgres"
+			}
+		},
+		"variables": {
+			"test": {
+				"type": "String"
 			}
 		},
 		"annotations": []
