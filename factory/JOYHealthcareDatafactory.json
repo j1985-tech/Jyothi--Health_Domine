@@ -1,0 +1,10 @@
+{
+	"name": "JOYHealthcareDatafactory",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "LS_ADLS",
+			"factoryStagingLSType": "LinkedServiceReference"
+		}
+	},
+	"location": "eastus"
+}
