@@ -3,7 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Read Source Table list",
+				"name": "Read Source Table List",
+				"description": "Read Source Tables List",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -18,7 +19,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select table_id from ctrl.table_config WHERE is_active=1 and source_system ='neon_postgres'",
+							"value": "select table_id from ctrl.table_config WHERE is_active=1 and source_system ='@{pipeline().parameters.source_system}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -36,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Read Source Table list",
+						"activity": "Read Source Table List",
 						"dependencyConditions": [
 							"Succeeded"
 						]
