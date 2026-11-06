@@ -34,7 +34,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from ctrl.table_config Where table_id=@{pipeline().parameters.table_id}",
+							"value": "select * from ctrl.table_config WHERE table_id=@{pipeline().parameters.table_id}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -49,20 +49,7 @@
 			{
 				"name": "Source to Landing Ingestion",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Set Smart Time",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Read Table Details",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -124,10 +111,6 @@
 			"table_id": {
 				"type": "string",
 				"defaultValue": "1"
-			},
-			"source_name": {
-				"type": "String",
-				"defaultValue": "pipeline().parameters.source_system"
 			}
 		},
 		"variables": {
